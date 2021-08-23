@@ -1,0 +1,22 @@
+    [{
+      "name": "avi",
+      "email": "avi@gmail.com",
+      "phones": ["039335678", "0528746525"],
+      "birthday": "1997-10-13 00:00:00",
+      "avatar": "avi.jpg"
+    },
+    {
+      "name": "moshe",
+      "email": "moshe@gmail.com",
+      "phones": ["09465741", "0547516495"],
+      "birthday":"1993-01-10 00:00:00",
+      "avatar": "moshe.jpg"
+    },
+    {
+      "name": "yosef",
+      "email": "yosef@gmail.com",
+      "phones": ["045934876", "0503422898"],
+      "birthday": "1958-12-30 00:00:00",
+      "avatar": "yosef.jpg"
+    }
+    ]

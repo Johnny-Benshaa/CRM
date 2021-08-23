@@ -1,0 +1,47 @@
+<app-page-header
+[pageTitle]="pageTitle"
+[pageIcon]="pageIcon"
+[pageDescription]="pageDescription">
+</app-page-header>
+
+<div class="row">
+    <div class="col-8">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+        <div class="col-6">
+            <label for="email">Email:</label>
+              <input
+               [(ngModel)]="email"
+               type="text"
+               id="email"
+               name="email"
+               class="form-control"
+               #ce="ngModel"
+               required
+               email
+               [ngClass]="{'is-invalid': ce.errors && ce.touched}"
+                   />
+                   <div [hidden]="!ce.errors?.required" class="invalid-feedback">Email is required</div>
+                   <div [hidden]="!ce.errors?.email" class="invalid-feedback"> a valid email must required min 2 chars</div>
+       
+         </div>
+         <div class="col-6">
+            <label for="password">Password:</label>
+              <input
+               [(ngModel)]="password"
+               type="password"
+               id="password"
+               name="password"
+               class="form-control"
+               #cp="ngModel"
+               required
+               minlength="6"
+               [ngClass]="{'is-invalid': cp.errors && cp.touched}"
+                 />
+                   <div [hidden]="!cp.errors?.required" class="invalid-feedback">Password is required</div>
+                   <div [hidden]="!cp.errors?.minlength" class="invalid-feedback"> a valid password must required min 2 chars</div>
+       
+         </div>
+         
+        <input [disabled]="!loginForm.form.valid" type="submit" name="submit" id="submit" value="Log in" class="btn btn-primary mt-3">
+    </form></div>
+</div>

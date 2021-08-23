@@ -1,0 +1,104 @@
+<app-page-header
+[pageTitle]="pageTitle"
+[pageIcon]="pageIcon"
+[pageDescription]="pageDescription">
+</app-page-header>
+ 
+<div class="col-12">
+    <form #customerForm="ngForm" (ngSubmit)="onSubmit(customerForm)">
+        <div class="col-6">
+           <label for="firstName">First Name:</label>
+             <input
+              [(ngModel)]="firstName"
+              type="text"
+              id="firstName"
+              name="firstName"
+              class="form-control"
+              #cfn="ngModel"
+              required
+              minlength="2"
+              [ngClass]="{'is-invalid': cfn.errors && cfn.touched}"
+
+                  />
+                  <div [hidden]="!cfn.errors?.required" class="invalid-feedback">First name is required</div>
+                  <div [hidden]="!cfn.errors?.minlength" class="invalid-feedback">First name must required min 2 chars</div>
+      
+        </div>
+        <div class="col-6">
+            <label for="lastName">Last Name:</label>
+              <input
+               [(ngModel)]="lastName"
+               type="text"
+               id="lastName"
+               name="lastName"
+               class="form-control"
+               #cln="ngModel"
+               required
+               minlength="2"
+               [ngClass]="{'is-invalid': cfn.errors && cfn.touched}"
+ 
+                   />
+                   <div [hidden]="!cfn.errors?.required" class="invalid-feedback">Last name is required</div>
+                   <div [hidden]="!cfn.errors?.minlength" class="invalid-feedback">Last name must required min 2 chars</div>
+       
+         </div>
+         <div class="col-6">
+            <label for="email">Email:</label>
+              <input
+               [(ngModel)]="email"
+               type="text"
+               id="email"
+               name="email"
+               class="form-control"
+               #ce="ngModel"
+               required
+               email
+               [ngClass]="{'is-invalid': ce.errors && ce.touched}"
+ 
+                   />
+                   <div [hidden]="!ce.errors?.required" class="invalid-feedback">Email is required</div>
+                   <div [hidden]="!ce.errors?.email" class="invalid-feedback"> a valid email must required min 2 chars</div>
+       
+         </div>
+         <div class="col-6">
+            <label for="address">Address:</label>
+              <input
+               [(ngModel)]="address"
+               type="text"
+               id="address"
+               name="address"
+               class="form-control"
+                   />
+               
+       
+         </div>
+         <div class="col-6">
+            <label for="notes">Notes:</label>
+              <input
+               [(ngModel)]="notes"
+               type="text"
+               id="email"
+               name="notes"
+               class="form-control"
+                   />
+               
+       
+         </div>
+        <input [disabled]="!customerForm.form.valid" type="submit" name="submit" id="submit" value="Save Customer" class="btn btn-primary mt-3">
+    </form>
+
+</div>
+ 
+
+<!-- <div class="row">
+    <div class="col-12">
+        <span class="float-left">
+            <a href="" routerLink='/customers' class="btn btn-danger">
+            <i class="fas fa-user-plus"></i>Cancel
+        </a>
+        </span>
+    </div>
+</div> -->
+
+<!-- TDF => template driven forms(validation in view)
+MDF => model driven forms(validation in class) -->

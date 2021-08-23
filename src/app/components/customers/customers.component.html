@@ -1,0 +1,67 @@
+<app-page-header
+[pageTitle]="pageTitle"
+[pageIcon]="pageIcon"
+[pageDescription]="pageDescription">
+
+</app-page-header>
+
+
+<div class="mb-3">
+    <label for="search-name" class="sr-only">search-name</label>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i class="fas fa-search"></i></span>
+      </div>
+      <input [(ngModel)]="searchNameText" (keyup)="onKeyUpSearch()" type="text" class="form-control" id="search-name" placeholder="Search Name" required="">
+    <!--   <div class="invalid-feedback" style="width: 100%;">
+        Your username is required.
+      </div> -->
+    </div>
+  </div>
+
+{{searchNameText}}
+
+<div class="row">
+    <div class="col-12">
+        <span class="float-left">
+            <a href="" routerLink="/customer/new" class="btn btn-primary ">
+            <i class="fas fa-user-plus"></i>Add New Customer</a>
+        </span>
+    </div>
+</div>
+
+<table *ngIf="customers ; else noCustomers" class="table table-script">
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Customer Name</th> 
+            <th>Email</th>
+            <th>Address</th>
+       
+           
+        </tr>
+    </thead>
+    <tbody>
+        <tr (mouseenter)="showOnHover($event)" (mouseleave)="hideOnLeave($event)" *ngFor="let customer of customers; let i = index">
+            <td>{{i+1}}
+    <span class="ml-3 invisible"> 
+    <a href="" class="text-secondary" routerLink="/customer/{{customer.id}}">
+    <i class="fas fa-eye"></i></a>
+    <a href="" class="text-secondary ml-3" routerLink="/customer/{{customer.id}}/edit">
+    <i class="fas fa-pen"></i></a>
+    <a  class="text-secondary ml-3" (click)="deleteCustomer(customer.id,$event)">
+    <i class="fas fa-trash"></i></a>
+    </span>
+
+          
+            <td>{{customer.firstName| titlecase }} {{customer.lastName| titlecase }}</td>
+            <td>{{customer.email | lowercase}}</td>
+            <td>{{customer.address | lowercase}}</td>
+            <td>{{customer.notes | lowercase}}</td>
+          
+        </tr>
+    </tbody>
+</table>
+<ng-template #noCustomers>
+    <p>No customers avilable...</p>
+</ng-template>
